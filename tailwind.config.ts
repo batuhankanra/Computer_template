@@ -11,6 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary:   '#2563EB', // Mavi (ana vurgu, butonlar)
+        secondary: '#3B82F6', // Hover vurgusu
+        third:     '#F9FAFB', // Sayfa arka planı
+        fourth:    '#111827', // Yazı rengi (siyah-gri)
+        fifth:     '#E5E7EB', // Kart, input, border arka planı
       },
     },
   },
