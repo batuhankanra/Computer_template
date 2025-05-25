@@ -1,9 +1,10 @@
-
+import React from 'react'
 
 const Page = () => {
+  
   return (
-    <div>
-      sa
+    <div className=''>
+      home
     </div>
   )
 }

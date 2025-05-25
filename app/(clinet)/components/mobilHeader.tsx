@@ -33,7 +33,7 @@ const MobilHeader:FC<mobilHeaderProps> = ({active,setActive}) => {
         </div>
         <div className='p-5'>
           <div className='w-full' >
-              <Link href={'/'} onClick={() => setActive(false)} className="flex items-center gap-x-2 text-base font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md hover:border hover:border-fifth "><FaUserCircle/> Üye ol / Giriş yap</Link>
+              <Link href={'/login'} onClick={() => setActive(false)} className="flex items-center gap-x-2 text-base font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md hover:border hover:border-fifth "><FaUserCircle/> Üye ol / Giriş yap</Link>
               <Link href={'/'} onClick={() => setActive(false)} className="flex items-center gap-x-2 text-base font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md hover:border hover:border-fifth "><IoMdHelpCircle size={19}/> Yardım</Link>
 
               </div>

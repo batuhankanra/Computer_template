@@ -1,5 +1,6 @@
+
 import type { Metadata } from "next";
-import { Geist, Urbanist } from "next/font/google";
+import {  Urbanist } from "next/font/google";
 import "./globals.css";
 
 
@@ -23,7 +24,8 @@ export default function RootLayout({
       <body
         className={` ${UrbanistFonts.className} antialiased`}
       >
-        {children}
+    
+          {children}
       </body>
     </html>
   );

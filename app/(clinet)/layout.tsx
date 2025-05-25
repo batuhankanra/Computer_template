@@ -1,14 +1,16 @@
+'use client'
 import React from 'react'
 import Header from './components/header';
+import { SessionProvider } from 'next-auth/react';
 
 const Layout= ({children}: Readonly<{children: React.ReactNode;}>) => {
   return (
-    <div>
-        <Header />
-        <div className='mt-8'>
-          {children}
-        </div>
-    </div>
+    <SessionProvider>
+          <Header />
+          <div className='mt-12'>
+            {children}
+          </div>
+    </SessionProvider>
   )
 }
 
