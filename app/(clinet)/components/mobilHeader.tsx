@@ -1,18 +1,38 @@
 "use client"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import  { FC } from 'react'
+import  { FC, useEffect, useRef, useState } from 'react'
 import { IoMenu } from "react-icons/io5";
 import { menu } from '@/routes/menu';
 import { IoMdHelpCircle } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
+import { signOut, useSession } from 'next-auth/react';
 
 const MobilHeader:FC<mobilHeaderProps> = ({active,setActive}) => {
+    const { data: session, status } = useSession();
+    const [isActive,setIsActive]=useState<boolean>(false)
+    const menuRef=useRef<HTMLDivElement | null>(null)
+  
     
     const pathName=usePathname()
+    const closeState=()=>{
+      setActive(false)
+      setIsActive(false)
+    }
+    useEffect(()=>{
+      const handleClick=(event:MouseEvent)=>{
+        if(menuRef.current && !menuRef.current.contains(event.target as Node)){
+          setActive(false)
+        }
+      }
+      document.addEventListener('mousedown',handleClick)
+      return ()=>{
+        document.removeEventListener('mousedown',handleClick)
+      }
+    },[])
   return (
    
-      <div
+      <div ref={menuRef}
         className={`fixed top-0 left-0 h-full w-64 bg-third shadow-lg z-50 transform transition-transform duration-300 flex flex-col  justify-between ${
           active ? 'translate-x-0' : '-translate-x-full'
         }`}
@@ -31,9 +51,23 @@ const MobilHeader:FC<mobilHeaderProps> = ({active,setActive}) => {
             ))}
           </nav>
         </div>
-        <div className='p-5'>
+        <div className='p-5 ' ref={menuRef}>
           <div className='w-full' >
-              <Link href={'/login'} onClick={() => setActive(false)} className="flex items-center gap-x-2 text-base font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md hover:border hover:border-fifth "><FaUserCircle/> Üye ol / Giriş yap</Link>
+              {status ==="authenticated" ? (
+                <div className='w-full relative'>
+                  <button onClick={() => setIsActive(!isActive)} className="flex items-center gap-x-2 text-base font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md hover:border hover:border-fifth "><FaUserCircle/>{session.user?.name} </button> 
+                  {isActive && (
+                    <div className='absolute z-99  -top-32 bg-third border border-fifth w-full shadow-md text-lg'>
+                    <Link href={'/profile'} className='block px-4 py-2 hover:bg-gray-100 w-full ' onClick={closeState} type='button'>Profile</Link>
+                    <Link href={'/setting'} className='block px-4 py-2 hover:bg-gray-100 w-full ' onClick={closeState} type='button'>Ayarlar</Link>
+                    <button className='block px-4 py-2 hover:bg-gray-100 w-full text-start ' onClick={()=>signOut()} type='button'>Cikis Yap</button>
+                  </div>
+                  )}
+                </div>
+              ) :
+            <Link href={'/login'} onClick={() => setActive(false)} className="flex items-center gap-x-2 text-base font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md hover:border hover:border-fifth "><FaUserCircle/> Üye ol / Giriş yap</Link>
+                
+            }
               <Link href={'/'} onClick={() => setActive(false)} className="flex items-center gap-x-2 text-base font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md hover:border hover:border-fifth "><IoMdHelpCircle size={19}/> Yardım</Link>
 
               </div>

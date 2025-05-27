@@ -1,12 +1,14 @@
-import React from 'react'
+"use client"
 
-const Page = () => {
-  
+import Hero from "./homeComponents/hero"
+
+
+const Home = () => {
   return (
-    <div className=''>
-      home
+    <div className=" container mx-auto pt-4">
+      <Hero />
     </div>
   )
 }
 
-export default Page
+export default Home
