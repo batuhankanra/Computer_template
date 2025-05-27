@@ -16,7 +16,11 @@ export default {
         third:     '#F9FAFB', // Sayfa arka planı
         fourth:    '#111827', // Yazı rengi (siyah-gri)
         fifth:     '#E5E7EB', // Kart, input, border arka planı
+        sixth:     '#FFF4E0'
       },
+      fontFamily:{
+        sans:["var(--font-inter)"]
+      }
     },
   },
   plugins: [],

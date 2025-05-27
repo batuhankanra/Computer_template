@@ -1,5 +1,7 @@
 import useEmblaCarousel from "embla-carousel-react"
+import Autoplay from 'embla-carousel-autoplay'
 import { useCallback, useEffect, useState } from "react"
+
 import image1 from '@/public/banner/computer1.jpg'
 import image2 from '@/public/banner/computer2.jpg'
 import image3 from '@/public/banner/computer3.jpg'
@@ -13,7 +15,7 @@ import { FaArrowRight,FaArrowLeft  } from "react-icons/fa";
 const images=[image1.src,image2.src,image3.src,image4.src,image5.src,image6.src]
 
 const Slider = () => {
-  const [emblaRef,emblaApi] = useEmblaCarousel({loop:true})    
+  const [emblaRef,emblaApi] = useEmblaCarousel({loop:true},[Autoplay()])    
     
 
     const scrollPrev=useCallback(()=>emblaApi?.scrollPrev(),[emblaApi])
@@ -22,21 +24,21 @@ const Slider = () => {
  
 
   return (
-    <article className="relative max-w-4xl mx-auto overflow-hidden">
+    <article className="relative max-w-5xl mx-auto overflow-hidden">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {images.map((item,i)=>(
             <div className="embla__slide min-w-full" key={i}>
-              <Image  src={item} width={1920} height={1080} alt={`urun ${i+1}`} className="w-full h-96 object-cover rounded-xl shadow-md" />
+              <Image  src={item} width={1920} height={1080} alt={`urun ${i+1}`} className="w-full h-96  object-cover rounded-xl shadow-md" />
 
             </div>
           ))}
         </div>
       </div>
-      <button onClick={scrollNext} aria-label="sonraki"  className="absolute top-1/2 right-4 -translate-y-1/2 px-3 py-2 text-lg bg-white rounded-full shadow-md disabled:opacity-40">
+      <button onClick={scrollNext} aria-label="sonraki"  className="hidden md:block absolute top-1/2 right-4 -translate-y-1/2 px-3 py-2 text-lg bg-white rounded-full shadow-md disabled:opacity-40">
           <FaArrowRight />
       </button>
-      <button onClick={scrollPrev} aria-label="sonraki"  className="absolute top-1/2 left-4 -translate-y-1/2 px-3 py-2 text-lg bg-white rounded-full shadow-md disabled:opacity-40">
+      <button onClick={scrollPrev} aria-label="sonraki"  className="hidden md:block absolute top-1/2 left-4 -translate-y-1/2 px-3 py-2 text-lg bg-white rounded-full shadow-md disabled:opacity-40">
           <FaArrowLeft  />
       </button>
     </article>
