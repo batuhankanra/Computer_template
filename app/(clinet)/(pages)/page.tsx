@@ -2,6 +2,7 @@
 
 import Hero from "./homeComponents/hero"
 import HomeCategory from "./homeComponents/homeCategory"
+import NewArrivals from "./homeComponents/NewArrivals"
 import PromotionalProducts from "./homeComponents/PromotionalProducts"
 
 
@@ -11,6 +12,7 @@ const Home = () => {
       <Hero />
       <PromotionalProducts />
       <HomeCategory />
+      <NewArrivals  />
     </div>
   )
 }

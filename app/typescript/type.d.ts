@@ -23,3 +23,10 @@ type ProductProps = {
   price:number
   discount?:number
 };
+
+interface CompanyLogo{
+  id:number,
+  title:string
+  link:string
+  image:string
+}
