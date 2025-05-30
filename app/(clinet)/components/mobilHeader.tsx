@@ -33,7 +33,7 @@ const MobilHeader:FC<mobilHeaderProps> = ({active,setActive}) => {
   return (
    
       <div ref={menuRef}
-        className={`fixed top-0 left-0 h-full w-64 bg-third shadow-lg z-50 transform transition-transform duration-300 flex flex-col  justify-between ${
+        className={`fixed top-0 left-0 h-full w-64 bg-third shadow-lg z-50 transform transition-transform duration-300 flex flex-col  justify-between  ${
           active ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
