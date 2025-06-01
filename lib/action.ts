@@ -20,6 +20,7 @@ export async function getUserCurrent() {
                 email:session.user.email
             },
             select:{
+                id:true,
                 email:true,
                 role:true,
                 name:true

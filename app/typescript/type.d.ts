@@ -30,3 +30,16 @@ interface CompanyLogo{
   link:string
   image:string
 }
+interface categoryReqProps{
+  name:string,
+  parentId:string
+}
+interface categoryUpdateReqProps{
+  id:string,
+  category:categoryReqProps
+}
+
+interface categoryRedux{
+  status:string,
+  data:categoryReqProps[]
+}

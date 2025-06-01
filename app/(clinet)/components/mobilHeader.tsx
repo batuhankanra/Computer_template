@@ -7,11 +7,15 @@ import { menu } from '@/routes/menu';
 import { IoMdHelpCircle } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { signOut, useSession } from 'next-auth/react';
+import { useAppSelector } from '@/lib/store/hook';
 
 const MobilHeader:FC<mobilHeaderProps> = ({active,setActive}) => {
     const { data: session, status } = useSession();
     const [isActive,setIsActive]=useState<boolean>(false)
     const menuRef=useRef<HTMLDivElement | null>(null)
+    const {data}=useAppSelector(state=>state.category)
+    const categoryStatus=useAppSelector(state=>state.category.status)
+
   
     
     const pathName=usePathname()
@@ -43,9 +47,9 @@ const MobilHeader:FC<mobilHeaderProps> = ({active,setActive}) => {
             <button onClick={() => setActive(false)}><IoMenu size={24} /></button>
           </div>
           <nav className="flex flex-col gap-2  w-full">
-            {menu.length>0 && menu.map(item=>(
-              <div className='w-full flex items-start border-b p-3 hover:bg-fifth' key={item.id}>
-                <Link href={item.link} onClick={() => setActive(false)} className={`text-xl  font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md  ${pathName===item.link && 'text-primary'}`}>{item.name}</Link>
+            {categoryStatus==='Success' && data.map((item,i)=>(
+              <div className='w-full flex items-start border-b p-3 hover:bg-fifth' key={i}>
+                <Link href={item.name} onClick={() => setActive(false)} className={`text-xl  font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md  ${pathName===item.name && 'text-primary'}`}>{item.name}</Link>
 
               </div>
             ))}
@@ -57,8 +61,10 @@ const MobilHeader:FC<mobilHeaderProps> = ({active,setActive}) => {
                 <div className='w-full relative'>
                   <button onClick={() => setIsActive(!isActive)} className="flex items-center gap-x-2 text-base font-semibold text-fourth hover:text-primary transition-colors duration-200 px-2 py-1 rounded-md hover:border hover:border-fifth "><FaUserCircle/>{session.user?.name} </button> 
                   {isActive && (
-                    <div className='absolute z-99  -top-32 bg-third border border-fifth w-full shadow-md text-lg'>
+                    <div className='absolute z-99  -top-52 bg-third border border-fifth w-full shadow-md text-lg'>
                     <Link href={'/profile'} className='block px-4 py-2 hover:bg-gray-100 w-full ' onClick={closeState} type='button'>Profile</Link>
+                    <Link href={'/admin'} className='block px-4 py-2 hover:bg-gray-100 w-full ' onClick={closeState} type='button'>Admin menu</Link>
+
                     <Link href={'/setting'} className='block px-4 py-2 hover:bg-gray-100 w-full ' onClick={closeState} type='button'>Ayarlar</Link>
                     <button className='block px-4 py-2 hover:bg-gray-100 w-full text-start ' onClick={()=>signOut()} type='button'>Cikis Yap</button>
                   </div>

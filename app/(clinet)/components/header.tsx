@@ -1,12 +1,22 @@
 "use client"
-import  { FC, useState } from 'react'
+import  { FC, useEffect, useState } from 'react'
 import { IoMenu } from "react-icons/io5";
 import MobilHeader from './mobilHeader';
 import { FaSearch, FaShoppingBasket } from 'react-icons/fa';
+import { useAppDispatch } from '@/lib/store/hook';
+import { getFullItem ,getAdd} from '@/lib/store/features/category';
+
 
 const Header:FC = () => {
   const [active,setActive]=useState<boolean>(false)
+  const dispatch=useAppDispatch()
+  useEffect(()=>{
+    const response=async ()=>{
+    dispatch(getFullItem())
+  }
+  response()
 
+  },[])
 
   return (
     <header className=' fixed top-0 py-3 bg-third w-full  border-b border-fifth z-20' >
