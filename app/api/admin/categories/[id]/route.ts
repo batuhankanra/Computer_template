@@ -64,3 +64,20 @@ export async function PATCH(req:Request,{params}:Params) {
         return NextResponse.json({msg:'Internal Server Error '},{status:500})
     }
 }
+export async function GET(req:Request,{params}:Params) {
+     try{
+        const session=await getUserCurrent()
+        if(session?.role!='ADMIN'){
+            return NextResponse.json({msg:'Yetkiniz Yetersiz'},{status:403})
+        }
+        const data=await prisma.category.findUnique({
+            where:{
+                id:params.id
+            }
+        })
+        return NextResponse.json(data,{status:200})
+        
+    }catch (err){
+        return NextResponse.json({msg:'Internal Server Error '},{status:500})
+    }
+}

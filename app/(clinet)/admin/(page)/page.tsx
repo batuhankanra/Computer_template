@@ -1,10 +1,10 @@
-import React from 'react'
+
+
 
 const Adminpage = () => {
+  
   return (
-    <div className=''>
-      sa
-    </div>
+     <div>sa</div>
   )
 }
 

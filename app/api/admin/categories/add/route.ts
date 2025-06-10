@@ -10,7 +10,7 @@ export async function POST(req:Request) {
             return NextResponse.json({msg:'Yetkiniz Yetersiz'},{status:403})
         }
         const {name,parentId}=await req.json()
-        console.log(name)
+
         if(!name || !parentId ){
             return NextResponse.json({msg:'Kategori ismi Boş olamaz'},{status:400})
         }
@@ -21,7 +21,7 @@ export async function POST(req:Request) {
                 userId:session.id
             }
         })
-        return NextResponse.json({msg:'basarili'})
+        return NextResponse.json({msg:'basarili'},{status:201})
         
     }catch (err){
         console.log(err)

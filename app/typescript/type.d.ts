@@ -1,5 +1,9 @@
 
-
+interface User {
+  name:string
+  email:string
+  id:string
+}
 interface menuProps{
     id:number
     name:string
@@ -43,3 +47,70 @@ interface categoryRedux{
   status:string,
   data:categoryReqProps[]
 }
+interface UploadState{
+  message:string
+  success: boolean
+  filePath:string
+}
+interface FileInputProps {
+  label?: string;
+  onChange: (files: File[]) => void;
+  multiple?: boolean;
+  accept?: string;
+}
+
+
+
+interface CommenInputProps{
+  label:string
+  placeholder?:string
+}
+interface TextProps extends CommenInputProps{
+  type?: "text" | "email" | "password" | "search";
+  value: string;
+  onChange: (value: string) => void;
+}
+interface NumberProps extends CommenInputProps{
+  type: "number";
+  value: number;
+  onChange: (value: number) => void;
+}
+type InputProps=TextProps | NumberProps
+
+
+
+interface ProductFormData {
+  title: string;
+  price: number;
+  description: string;
+  img: File[];
+}
+
+interface ProductState{
+  loading:boolean
+  error:string | null
+  success:boolean
+}
+interface ProductsProps {
+  createdAt: string;
+  description: string;
+  id: string;
+  img: string[];
+  price: number;
+  title: string;
+  updatedAt: string;
+  user: User;
+  userId: string;
+}
+interface ReduxProduct{
+  data:ProductsProps[] 
+  update:ProductsProps
+}
+
+
+interface CreateProductArgs {
+  formData: FormData;
+  id: string;
+}
+
+

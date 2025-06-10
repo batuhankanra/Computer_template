@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import  { FC, useEffect, useRef, useState } from 'react'
 import { IoMenu } from "react-icons/io5";
-import { menu } from '@/routes/menu';
 import { IoMdHelpCircle } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { signOut, useSession } from 'next-auth/react';
