@@ -52,6 +52,9 @@ model Product{
     img String[]
     userId String  @db.ObjectId
     user User @relation(fields: [userId],references: [id])
+    categegoryId String @db.ObjectId
+    category Category @relation(fields: [categegoryId],references: [id])
+
     orderItem   OrderItems[]
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
@@ -63,6 +66,7 @@ model Category {
   parentId   String?
   userId    String @db.ObjectId 
   user User @relation(fields: [userId],references: [id])   
+  product Product[]
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }

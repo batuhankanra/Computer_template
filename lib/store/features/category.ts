@@ -29,7 +29,7 @@ export const update=createAsyncThunk('category/Update',async ({id,category:{name
         return err
     }
 })
-export const deleteCategory=createAsyncThunk('category/Update',async (id:string)=>{
+export const deleteCategory=createAsyncThunk('category/delete',async (id:string)=>{
     try{
         const response=await axios.delete(`/api/category/${id}`)
         return response.data.msg

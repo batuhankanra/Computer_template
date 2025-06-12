@@ -14,7 +14,7 @@ const Input:FC<InputProps> = ({label,value,placeholder,onChange,type}) => {
         }
     }
   return (
-     <div className=" flex flex-col space-y-1   ">
+     <div className=" flex flex-col space-y-1 w-full   ">
      <div>
          {label && <label className="text-sm font-medium text-gray-700  ">{label}</label>}
 

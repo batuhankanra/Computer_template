@@ -34,12 +34,13 @@ export async function DELETE(req: Request, { params }: Params) {
 
 
 
-export async function PATCH(req:Request,{params}:Params) {
+export async function PUT(req:Request,{params}:Params) {
     try{
         const session=await getUserCurrent()
         if(session?.role!='ADMIN'){
             return NextResponse.json({msg:'Yetkiniz Yetersiz'},{status:403})
         }
+        const id =await params.id
         const {name,parentId}=await req.json()
         const updates={name,parentId}
         if(name){
@@ -50,7 +51,7 @@ export async function PATCH(req:Request,{params}:Params) {
         }
         await prisma.category.update({
             where:{
-                id:params.id
+                id:id
             },
             data:{
                 name:updates?.name ?? undefined,

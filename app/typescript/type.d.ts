@@ -114,3 +114,28 @@ interface CreateProductArgs {
 }
 
 
+interface ReduxCategory{
+  data:CategoryProps[]
+  updates:{
+    id:string
+    name:string
+    parentId:string
+  }
+}
+interface CategoryProps{
+  id:string 
+  name:string
+  parentId:string
+  userId:string
+  user:User
+  createdAt:string
+  updatedAt:string
+}
+interface CategoryFetchProps{
+  name:string
+  parentId:string
+}
+interface RouteModalProps{
+  path:string,
+  element:ReactElement
+}
