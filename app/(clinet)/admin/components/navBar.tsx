@@ -4,6 +4,7 @@ import UserMenu from "./auth"
 import { useEffect } from "react"
 import { getProduct } from "@/lib/store/features/product/getApiProduct"
 import { getCategory } from "@/lib/store/features/categories/getApiCategories"
+import { getUsers } from "@/lib/store/features/user/getUser"
 
 
 
@@ -13,6 +14,7 @@ const NavBar = () => {
   useEffect(()=>{
     dispatch(getProduct())
     dispatch(getCategory())
+    dispatch(getUsers())
 
   },[])
   return (

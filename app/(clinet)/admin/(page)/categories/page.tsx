@@ -2,7 +2,6 @@
 import { getCategory, setCategory } from '@/lib/store/features/categories/getApiCategories'
 import { setModal } from '@/lib/store/features/modal/modal'
 import { useAppDispatch, useAppSelector } from '@/lib/store/hook'
-import  { useEffect } from 'react'
 
 const Categories = () => {
 

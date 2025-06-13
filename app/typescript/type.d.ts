@@ -4,6 +4,24 @@ interface User {
   email:string
   id:string
 }
+interface UserProps{
+  id:string
+  name:string
+  email:string
+  emailVerified:boolean
+  role:string
+  createdAt:string
+  updatedAt:string
+}
+interface UserGetRedux{
+  data:UserProps[]
+  update:{
+    name:string 
+    email:string
+    role:string
+  }
+}
+
 interface menuProps{
     id:number
     name:string

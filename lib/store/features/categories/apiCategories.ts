@@ -47,7 +47,7 @@ const initialState:ProductState={
 
 
 const apiCategories=createSlice({
-    name:'product',
+    name:'categories',
     initialState,
     reducers:{},
     extraReducers:(builder)=>{

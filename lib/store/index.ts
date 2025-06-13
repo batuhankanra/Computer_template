@@ -5,15 +5,18 @@ import getProduct from './features/product/getApiProduct'
 import modal from './features/modal/modal'
 import categories from './features/categories/getApiCategories'
 import apiCategories from './features/categories/apiCategories'
+import getUser from './features/user/getUser'
 
 export const store=configureStore({
     reducer:{
+        getUser,
         apiCategories,
         categories,
         category,
         createProduct,
         getProduct,
         modal
+        
 
     }
 })
