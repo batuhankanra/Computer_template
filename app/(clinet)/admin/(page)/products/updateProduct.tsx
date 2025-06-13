@@ -1,19 +1,22 @@
 'use client'
 
 import { FC, FormEvent, useState } from "react";
-import FileInput from "../../components/fileInput";
-import Input from "../../components/Input";
+import FileInput from "../components/fileInput";
+import Input from "../components/Input";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hook";
-import { createProduct, productUpdate } from "@/lib/store/features/product/apiProduct";
+import { productUpdate } from "@/lib/store/features/product/apiProduct";
 import { removeModal } from "@/lib/store/features/modal/modal";
 import Image from "next/image";
 
 const ProductUpdate :FC= () => {
   const {update} = useAppSelector(state=>state.getProduct)
-  console.log(update)
+  const {data}=useAppSelector(state=>state.categories)
   const [title,setTitle]=useState<string>(update.title)
   const [description,setDescription]=useState<string>(update.description)
   const [price,setPrice]=useState<number>(update.price)
+  const [parentId,setParentId]=useState<parentId>({id:'',name:""})
+  const [active,setActive]=useState<boolean>(false)
+  
   
   
 const [selectedFile,setSelectedFile]=useState <File[]  >([])
@@ -34,6 +37,11 @@ const [selectedFile,setSelectedFile]=useState <File[]  >([])
     })
     dispatch(productUpdate({formData:formData,id:update.id}))
   }
+
+  const handleParentId=(item:parentId)=>{
+    setParentId({id:item.id,name:item.name})
+    setActive(false)
+  }
   return (
       <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4 p-6 bg-white rounded shadow my-2">
       <div className="flex items-center justify-between">
@@ -45,6 +53,18 @@ const [selectedFile,setSelectedFile]=useState <File[]  >([])
 
 
       <Input label="Ürün Fiyatını giriniz:" value={price} onChange={setPrice} placeholder="Ürün Fiyatını giriniz" type="number"  />
+      <div className="w-full relative">
+          <button onClick={()=>setActive(!active)} type="button"  className="mt-1 bg-white block w-full rounded border border-gray-300 px-3 py-2 shadow-sm   hover:border-primary " >{parentId.name ? parentId.name : 'Kategori Seç'}</button>
+          {active && (
+            <div className="absolute  w-full bg-white py-3 flex flex-col gap-y-2 border border-secondary rounded-md" >
+              {data.map(item=>(
+                <button onClick={()=>handleParentId(item)} key={item.id} className="w-full hover:bg-zinc-300 py-1 ">
+                  {item.name}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700">Açıklama</label>

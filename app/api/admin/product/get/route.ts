@@ -18,6 +18,12 @@ export async function GET() {
                             name:true,
                             email:true
                         }
+                    },
+                    category:{
+                        select:{
+                            name:true,
+                            id:true
+                        }
                     }
                 }
             })

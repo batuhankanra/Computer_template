@@ -16,8 +16,9 @@ export async function POST(req:NextRequest) {
         const title:string=data.get('title') as string
         const description:string=data.get('description') as string
         const price:string =data.get('price') as string
+        const parentId:string =data.get('parentId') as string
      
-        if(!title || !description || !price || files.length===0){
+        if(!title || !description || !price || files.length===0 || !parentId){
             return NextResponse.json({msg:'Bütün alanlar dolu olmalıdır '},{status:400})
         }
         const imagePath:string[]=[]
@@ -36,7 +37,8 @@ export async function POST(req:NextRequest) {
                 description,
                 price: Number(price),
                 img:imagePath,
-                userId:session.id
+                userId:session.id,
+                categegoryId:parentId
             }
         })
         return NextResponse.json({msg:'Basarılı bir şekilde kaydedildi Ürününüz'})

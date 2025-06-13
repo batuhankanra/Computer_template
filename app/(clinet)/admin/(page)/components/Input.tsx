@@ -1,6 +1,6 @@
 import  { ChangeEvent, FC } from 'react'
 
-const Input:FC<InputProps> = ({label,value,placeholder,onChange,type}) => {
+const Input:FC<InputProps> = ({disabled=false,label,value,placeholder,onChange,type}) => {
     const handleChange=(e:ChangeEvent<HTMLInputElement>)=>{
         if(type==="number"){
             const parsed=parseFloat(e.target.value)
@@ -21,6 +21,7 @@ const Input:FC<InputProps> = ({label,value,placeholder,onChange,type}) => {
       <input
         type={type}
         value={value}
+        disabled={disabled}
         onChange={handleChange}
         placeholder={`${placeholder}`}
         className="mt-1 block w-full rounded border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring focus:border-blue-500 "

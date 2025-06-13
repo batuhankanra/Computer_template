@@ -62,6 +62,7 @@ interface FileInputProps {
 
 
 interface CommenInputProps{
+  disabled?:boolean
   label:string
   placeholder?:string
 }
@@ -101,6 +102,10 @@ interface ProductsProps {
   updatedAt: string;
   user: User;
   userId: string;
+  category:{
+    name:string,
+    id:string
+  }
 }
 interface ReduxProduct{
   data:ProductsProps[] 
@@ -138,4 +143,9 @@ interface CategoryFetchProps{
 interface RouteModalProps{
   path:string,
   element:ReactElement
+}
+
+interface parentId{
+  name:string
+  id:string
 }

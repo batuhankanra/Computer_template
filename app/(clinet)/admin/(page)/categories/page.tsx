@@ -9,9 +9,6 @@ const Categories = () => {
   const {data}=useAppSelector(state=>state.categories)
   
   const dispatch=useAppDispatch()
-  useEffect(()=>{
-    dispatch(getCategory())
-  },[])
 
 
   const handleUpdateModal=(category:CategoryProps)=>{
@@ -27,7 +24,7 @@ const Categories = () => {
     <div className="w-full">
   <div className="w-full border-b p-4 border-fifth flex items-center justify-between">
     <h1 className="text-3xl font-semibold text-gray-800">Kategori</h1>
-              <button onClick={()=>dispatch(setModal("category-create"))} className='mr-2 px-1 py-2 rounded-md border hover:border-green-500 '>Ürün Ekle</button> 
+              <button onClick={()=>dispatch(setModal("category-create"))} className='mr-2 px-1 py-2 rounded-md border hover:border-green-500 '>Kategori Ekle</button> 
 
   </div>
 

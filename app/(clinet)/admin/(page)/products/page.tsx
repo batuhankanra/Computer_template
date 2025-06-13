@@ -1,19 +1,16 @@
 "use client"
 import { setModal } from '@/lib/store/features/modal/modal'
-import { getProduct, setProduct } from '@/lib/store/features/product/getApiProduct'
+import { setProduct } from '@/lib/store/features/product/getApiProduct'
 import { useAppDispatch, useAppSelector } from '@/lib/store/hook'
 import Image from 'next/image'
-import Link from 'next/link'
-import  { useEffect } from 'react'
 
 const ProductGetItem = () => {
 
   const {data}=useAppSelector(state=>state.getProduct)
+
   
   const dispatch=useAppDispatch()
-  useEffect(()=>{
-    dispatch(getProduct())
-  },[])
+  
 
 
   const handleUpdateModal=(product:ProductsProps)=>{
@@ -32,6 +29,9 @@ const ProductGetItem = () => {
               <button onClick={()=>dispatch(setModal("product-create"))} className='mr-2 px-1 py-2 rounded-md border hover:border-green-500 '>Ürün Ekle</button> 
 
   </div>
+  <div className='w-full flex items-center justify-start py-3'>
+    <span>Toplam Ürün : {data.length}</span>
+  </div>
 
   <div className="overflow-x-auto rounded-lg shadow border border-gray-200 mt-6">
     <table className="min-w-full divide-y divide-gray-200 bg-white text-sm">
@@ -42,6 +42,7 @@ const ProductGetItem = () => {
           <th className="px-4 py-3 whitespace-nowrap">Fiyat</th>
           <th className="px-4 py-3 whitespace-nowrap">Açıklama</th>
           <th className="px-4 py-3 whitespace-nowrap">Oluşturan kişi</th>
+          <th className="px-4 py-3 whitespace-nowrap">Kategoriye Bağlı</th>
           <th className="px-4 py-3 whitespace-nowrap">Görseller</th>
           <th className="px-4 py-3 whitespace-nowrap">Oluşturulan Tarih</th>
           <th className="px-4 py-3 whitespace-nowrap">Güncellendiği Tarih</th>
@@ -58,6 +59,7 @@ const ProductGetItem = () => {
             <td className="px-4 py-3 text-green-600 font-semibold">₺{product.price}</td>
             <td className="px-4 py-3 max-w-sm text-gray-700 truncate">{product.description}</td>
             <td className="px-4 py-3 font-medium text-gray-900">{product.user.name } - {product.user.email}</td>
+            <td className="px-4 py-3 font-medium text-gray-900">{product.category.name}</td>
 
             <td className="px-4 py-3">
               <div className="flex flex-wrap gap-2">
