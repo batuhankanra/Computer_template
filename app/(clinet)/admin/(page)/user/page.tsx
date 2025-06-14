@@ -1,6 +1,7 @@
 "use client"
-import { getCategory, setCategory } from '@/lib/store/features/categories/getApiCategories'
+
 import { setModal } from '@/lib/store/features/modal/modal'
+import { setUser } from '@/lib/store/features/user/getUser'
 import { useAppDispatch, useAppSelector } from '@/lib/store/hook'
 
 const Categories = () => {
@@ -11,12 +12,12 @@ const Categories = () => {
 
 
   const handleUpdateModal=(user:UserProps)=>{
-    dispatch(setCategory(user))
-    dispatch(setModal('category-update'))
+    dispatch(setUser(user))
+    dispatch(setModal('user-update'))
   }
   const handleDeleteModal=({id,name}:{id:string,name:string})=>{
-    dispatch(setCategory({id,name}))
-    dispatch(setModal('category-delete'))
+    dispatch(setUser({id,name}))
+    dispatch(setModal('user-delete'))
     
   }
   return (

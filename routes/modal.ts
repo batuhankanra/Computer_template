@@ -4,6 +4,8 @@ import Updatecategories from "@/app/(clinet)/admin/(page)/categories/updateCateg
 import productCreate from "@/app/(clinet)/admin/(page)/products/addProduct"
 import DeleteProduct from "@/app/(clinet)/admin/(page)/products/deleteProduct"
 import ProductUpdate from "@/app/(clinet)/admin/(page)/products/updateProduct"
+import DeleteUser from "@/app/(clinet)/admin/(page)/user/deleteUser"
+import UpdateUser from "@/app/(clinet)/admin/(page)/user/updateUser"
 
 
 
@@ -31,6 +33,14 @@ export const routeModal:RouteModalProps[]=[
     {
         path:"category-delete",
         element:DeleteCategories
+    },
+    {
+        path:"user-update",
+        element:UpdateUser
+    },
+     {
+        path:"user-delete",
+        element:DeleteUser
     }
     
 ]

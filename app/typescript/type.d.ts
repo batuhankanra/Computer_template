@@ -16,6 +16,7 @@ interface UserProps{
 interface UserGetRedux{
   data:UserProps[]
   update:{
+    id:string
     name:string 
     email:string
     role:string
@@ -166,4 +167,8 @@ interface RouteModalProps{
 interface parentId{
   name:string
   id:string
+}
+enum Role {
+  USER = "USER",
+  ADMIN = "ADMIN"
 }

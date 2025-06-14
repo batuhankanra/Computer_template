@@ -17,7 +17,7 @@ export const getUsers=createAsyncThunk("user/get",async ()=>{
 
 const initialState:UserGetRedux={
     data:[] ,
-    update:{name:'',role:'',email:''}
+    update:{name:'',role:'',email:'',id:''}
 }
 
 
